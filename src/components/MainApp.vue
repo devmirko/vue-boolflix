@@ -2,7 +2,7 @@
 <main>
     <div id="research">
         <input type="text" v-model="userSearch">
-        <button @click="getList">cerca</button>
+        <button @click="getList(); getListTv()">cerca</button>
 
     </div>
     <div class="container">
@@ -10,7 +10,12 @@
             <div class="film" v-for="(element, i) in filteredlistFilm" :key="i">
                 <div class="title">{{ element.title }}</div>
                 <div class="original_title">{{ element.original_title }}</div>
-                <div class="lang">{{ element.original_language }}</div>
+                <div class="lang">{{ element.original_language }}
+                <!-- se la bandiera e inglese -->
+                <span v-if="element.original_language === 'en'" class="flag"><img src="../assets/britain_inghilterra_icon.png" alt=""></span>
+                <!-- se la bandiera e italiana -->
+                <span v-else-if="element.original_language === 'it'" class="flag"><img src="../assets/flag_italy_icon.png" alt=""></span>
+                </div>
                 <div class="vote">{{ element.vote_average }}</div>
             </div>
         </div>
@@ -29,14 +34,16 @@ export default {
   },
   data(){
     return{
-        api_key: "fd3f42d04d0da0ec874d9333f867384a",
         apiUrl:"",
+        apiUrlTv:"",
         listFilm : [],
+        listSerieTv: [],
         userSearch: "",
     }
   },
 
   methods: {
+    // funzione che ricerca i film
     getList() {
         this.apiUrl = "https://api.themoviedb.org/3/search/movie?api_key=fd3f42d04d0da0ec874d9333f867384a&language=it-IT&query=" + this.userSearch,
         axios.get(this.apiUrl)
@@ -47,7 +54,19 @@ export default {
     .catch((error)  => {
        console.log("errore", error);
     })
-    }
+    },
+    // funzione che ricerca le serie tv
+     getListTv() {
+        this.apiUrlTv = "https://api.themoviedb.org/3/search/tv?api_key=fd3f42d04d0da0ec874d9333f867384a&language=it-IT&query=" + this.userSearch,
+        axios.get(this.apiUrlTv)
+    .then((result) => {
+        this.listSerieTv = result.data.results;
+        console.log(result);
+    })
+    .catch((error)  => {
+       console.log("errore", error);
+    })
+    } 
   
 
   },
@@ -113,6 +132,17 @@ main{
                 width: calc(100% / 5 );
                 // debugger
                 color: white;
+
+                .flag{
+                    display: inline-block;
+                    width: 20px;
+                    height: 20px;
+                    img{
+                        max-width: 100%;
+                        max-height: 100%;
+                    }
+                   
+                }
                }
          }
     }
