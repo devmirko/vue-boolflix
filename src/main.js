@@ -1,6 +1,6 @@
 import Vue from 'vue'
 import App from './App.vue'
-
+/* eslint-disable */
 import { library } from "@fortawesome/fontawesome-svg-core";
 import { faStar as farStar } from "@fortawesome/free-regular-svg-icons";
 import { faStar as fasStar } from "@fortawesome/free-solid-svg-icons";
@@ -11,7 +11,7 @@ library.add(fasStar);
 
 Vue.component("fas", FontAwesomeIcon);
 
-
+/* eslint-enable */
 
 Vue.config.productionTip = false
 
