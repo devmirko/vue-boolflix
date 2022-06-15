@@ -8,18 +8,22 @@
     <div class="container">
         <div class="box_film">
             <div class="film" v-for="(element, i) in filteredlistFilm" :key="i">
-                <div class="title">{{ element.title }}</div>
-                <div class="original_title">{{ element.original_title }}</div>
-                <div class="lang">{{ element.original_language }}
-                <!-- se la bandiera e inglese -->
-                <span v-if="element.original_language === 'en'" class="flag"><img src="../assets/britain_inghilterra_icon.png" alt=""></span>
-                <!-- se la bandiera e italiana -->
-                <span v-else-if="element.original_language === 'it'" class="flag"><img src="../assets/flag_italy_icon.png" alt=""></span>
+                <div class="box_image">
+                    <img :src="urlImage + element.backdrop_path" alt="">
                 </div>
+                <div class="card"></div>
+                    <div class="title">{{ element.title }}</div>
+                    <div class="original_title">{{ element.original_title }}</div>
+                    <div class="lang">{{ element.original_language }}
+                        <!-- se la bandiera e inglese -->
+                        <span v-if="element.original_language === 'en'" class="flag"><img src="../assets/britain_inghilterra_icon.png" alt=""></span>
+                        <!-- se la bandiera e italiana -->
+                        <span v-else-if="element.original_language === 'it'" class="flag"><img src="../assets/flag_italy_icon.png" alt=""></span>
+                    </div>
                 <div class="vote">{{ element.vote_average }}</div>
-            </div>
+            </div>    
         </div>
-    </div>
+  </div>
 </main>
 </template>
 
@@ -39,6 +43,7 @@ export default {
         listFilm : [],
         listSerieTv: [],
         userSearch: "",
+        urlImage: "http://image.tmdb.org/t/p/w342/"
     }
   },
 
