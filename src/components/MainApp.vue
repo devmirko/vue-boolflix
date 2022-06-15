@@ -10,132 +10,14 @@
 
         <!-- film -->
         <div class="box_film">
-            <div class="film" v-for="(element, i) in filteredlistFilm" :key="i">
-                <div class="box_image">
-                    <img :src="urlImage + element.backdrop_path" alt="">
-                </div>
-
-
-                <div class="card"></div>
-                    <div class="title">{{ element.title }}</div>
-                    <div class="original_title">{{ element.original_title }}</div>
-                    <div class="lang">{{ element.original_language }}
-                        <!-- se la bandiera e inglese -->
-                        <span v-if="element.original_language === 'en'" class="flag"><img src="../assets/britain_inghilterra_icon.png" alt=""></span>
-                        <!-- se la bandiera e italiana -->
-                        <span v-else-if="element.original_language === 'it'" class="flag"><img src="../assets/flag_italy_icon.png" alt=""></span>
-                    </div>
-                <div class="vote">
-                    <div v-if="getStars(element.vote_average) == 0">
-                        <fas :icon="['far', 'star']" />
-                        <fas :icon="['far', 'star']" />
-                        <fas :icon="['far', 'star']" />
-                        <fas :icon="['far', 'star']" />
-                        <fas :icon="['far', 'star']" />
-                    </div>
-                    <div v-else-if="getStars(element.vote_average) == 1">
-                        <fas :icon="['fas', 'star']" />
-                        <fas :icon="['far', 'star']" />
-                        <fas :icon="['far', 'star']" />
-                        <fas :icon="['far', 'star']" />
-                        <fas :icon="['far', 'star']" />
-                    </div>
-                    <div v-else-if="getStars(element.vote_average) == 2">
-                        <fas :icon="['fas', 'star']" />
-                        <fas :icon="['fas', 'star']" />
-                        <fas :icon="['far', 'star']" />
-                        <fas :icon="['far', 'star']" />
-                        <fas :icon="['far', 'star']" />
-                    </div>
-                    <div v-else-if="getStars(element.vote_average) == 3">
-                        <fas :icon="['fas', 'star']" />
-                        <fas :icon="['fas', 'star']" />
-                        <fas :icon="['fas', 'star']" />
-                        <fas :icon="['far', 'star']" />
-                        <fas :icon="['far', 'star']" />
-                    </div>
-                    <div v-else-if="getStars(element.vote_average) == 4">
-                        <fas :icon="['fas', 'star']" />
-                        <fas :icon="['fas', 'star']" />
-                        <fas :icon="['fas', 'star']" />
-                        <fas :icon="['fas', 'star']" />
-                        <fas :icon="['far', 'star']" />
-                    </div>
-                    <div v-else-if="getStars(element.vote_average) == 5">
-                        <fas :icon="['fas', 'star']" />
-                        <fas :icon="['fas', 'star']" />
-                        <fas :icon="['fas', 'star']" />
-                        <fas :icon="['fas', 'star']" />
-                        <fas :icon="['fas', 'star']" />
-                    </div>
-                        
-                 
-                </div>
-            </div>    
+            <FilmApp v-for="(element, i) in filteredlistFilm" :key="i"
+            :listObjectFilm ="element"/>
+        
         </div>
-
         <!-- serie tv -->
          <div class="box_serie">
-            <div class="serie" v-for="(element, i) in filteredlistTv" :key="i">
-                <div class="box_image">
-                    <img :src="urlImage + element.backdrop_path" alt="">
-                </div>
-                <div class="card"></div>
-                    <div class="title">{{ element.name }}</div>
-                    <div class="original_title">{{ element.original_name }}</div>
-                    <div class="lang">{{ element.original_language }}
-                        <!-- se la bandiera e inglese -->
-                        <span v-if="element.original_language === 'en'" class="flag"><img src="../assets/britain_inghilterra_icon.png" alt=""></span>
-                        <!-- se la bandiera e italiana -->
-                        <span v-else-if="element.original_language === 'it'" class="flag"><img src="../assets/flag_italy_icon.png" alt=""></span>
-                    </div>
-                <div class="vote">
-                    <div v-if="getStars(element.vote_average) == 0">
-                        <fas :icon="['far', 'star']" />
-                        <fas :icon="['far', 'star']" />
-                        <fas :icon="['far', 'star']" />
-                        <fas :icon="['far', 'star']" />
-                        <fas :icon="['far', 'star']" />
-                    </div>
-                    <div v-else-if="getStars(element.vote_average) == 1">
-                        <fas :icon="['fas', 'star']" />
-                        <fas :icon="['far', 'star']" />
-                        <fas :icon="['far', 'star']" />
-                        <fas :icon="['far', 'star']" />
-                        <fas :icon="['far', 'star']" />
-                    </div>
-                    <div v-else-if="getStars(element.vote_average) == 2">
-                        <fas :icon="['fas', 'star']" />
-                        <fas :icon="['fas', 'star']" />
-                        <fas :icon="['far', 'star']" />
-                        <fas :icon="['far', 'star']" />
-                        <fas :icon="['far', 'star']" />
-                    </div>
-                    <div v-else-if="getStars(element.vote_average) == 3">
-                        <fas :icon="['fas', 'star']" />
-                        <fas :icon="['fas', 'star']" />
-                        <fas :icon="['fas', 'star']" />
-                        <fas :icon="['far', 'star']" />
-                        <fas :icon="['far', 'star']" />
-                    </div>
-                    <div v-else-if="getStars(element.vote_average) == 4">
-                        <fas :icon="['fas', 'star']" />
-                        <fas :icon="['fas', 'star']" />
-                        <fas :icon="['fas', 'star']" />
-                        <fas :icon="['fas', 'star']" />
-                        <fas :icon="['far', 'star']" />
-                    </div>
-                    <div v-else-if="getStars(element.vote_average) == 5">
-                        <fas :icon="['fas', 'star']" />
-                        <fas :icon="['fas', 'star']" />
-                        <fas :icon="['fas', 'star']" />
-                        <fas :icon="['fas', 'star']" />
-                        <fas :icon="['fas', 'star']" />
-                    </div>
-                        
-                 
-                </div>
-            </div>    
+            <SeriesApp v-for="(element, i) in filteredlistTv" :key="i"
+            :listObjectSeries ="element"/>
         </div>
 
 
@@ -146,10 +28,14 @@
 
 <script>
 import axios from "axios"
+import FilmApp from './FilmApp.vue'
+import SeriesApp from './SeriesApp.vue'
 
 export default {
   name: 'MainApp',
   components: {
+    FilmApp,
+    SeriesApp
  
 
   },
@@ -160,7 +46,6 @@ export default {
         listFilm : [],
         listSerieTv: [],
         userSearch: "",
-        urlImage: "http://image.tmdb.org/t/p/w342/",
         
     }
   },
@@ -264,29 +149,12 @@ main{
 
 
 
-         .box_film{
+        .box_film{
             width: 100%;
             display: flex ;
             background-color: black;
             overflow-x: scroll;
 
-
-               .film{
-                width: calc(100% / 5 );
-                // debugger
-                color: white;
-
-                .flag{
-                    display: inline-block;
-                    width: 20px;
-                    height: 20px;
-                    img{
-                        max-width: 100%;
-                        max-height: 100%;
-                    }
-                   
-                }
-               }
         }
 
         .box_serie{
@@ -296,24 +164,6 @@ main{
             background-color: black;
             overflow-x: scroll;
             
-
-
-               .serie{
-                width: calc(100% / 5 );
-                // debugger
-                color: white;
-
-                .flag{
-                    display: inline-block;
-                    width: 20px;
-                    height: 20px;
-                    img{
-                        max-width: 100%;
-                        max-height: 100%;
-                    }
-                   
-                }
-               }
         }
 
 
