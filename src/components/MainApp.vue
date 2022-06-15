@@ -20,7 +20,52 @@
                         <!-- se la bandiera e italiana -->
                         <span v-else-if="element.original_language === 'it'" class="flag"><img src="../assets/flag_italy_icon.png" alt=""></span>
                     </div>
-                <div class="vote">{{ element.vote_average }}</div>
+                <div class="vote">
+                    <div v-if="getStars(element.vote_average) == 0">
+                        <fas :icon="['far', 'star']" />
+                        <fas :icon="['far', 'star']" />
+                        <fas :icon="['far', 'star']" />
+                        <fas :icon="['far', 'star']" />
+                        <fas :icon="['far', 'star']" />
+                    </div>
+                    <div v-else-if="getStars(element.vote_average) == 1">
+                        <fas :icon="['fas', 'star']" />
+                        <fas :icon="['far', 'star']" />
+                        <fas :icon="['far', 'star']" />
+                        <fas :icon="['far', 'star']" />
+                        <fas :icon="['far', 'star']" />
+                    </div>
+                    <div v-else-if="getStars(element.vote_average) == 2">
+                        <fas :icon="['fas', 'star']" />
+                        <fas :icon="['fas', 'star']" />
+                        <fas :icon="['far', 'star']" />
+                        <fas :icon="['far', 'star']" />
+                        <fas :icon="['far', 'star']" />
+                    </div>
+                    <div v-else-if="getStars(element.vote_average) == 3">
+                        <fas :icon="['fas', 'star']" />
+                        <fas :icon="['fas', 'star']" />
+                        <fas :icon="['fas', 'star']" />
+                        <fas :icon="['far', 'star']" />
+                        <fas :icon="['far', 'star']" />
+                    </div>
+                    <div v-else-if="getStars(element.vote_average) == 4">
+                        <fas :icon="['fas', 'star']" />
+                        <fas :icon="['fas', 'star']" />
+                        <fas :icon="['fas', 'star']" />
+                        <fas :icon="['fas', 'star']" />
+                        <fas :icon="['far', 'star']" />
+                    </div>
+                    <div v-else-if="getStars(element.vote_average) == 5">
+                        <fas :icon="['fas', 'star']" />
+                        <fas :icon="['fas', 'star']" />
+                        <fas :icon="['fas', 'star']" />
+                        <fas :icon="['fas', 'star']" />
+                        <fas :icon="['fas', 'star']" />
+                    </div>
+                        
+                 
+                </div>
             </div>    
         </div>
   </div>
@@ -43,7 +88,8 @@ export default {
         listFilm : [],
         listSerieTv: [],
         userSearch: "",
-        urlImage: "http://image.tmdb.org/t/p/w342/"
+        urlImage: "http://image.tmdb.org/t/p/w342/",
+        
     }
   },
 
@@ -71,7 +117,11 @@ export default {
     .catch((error)  => {
        console.log("errore", error);
     })
-    } 
+    },
+    getStars(vote) {
+      return Math.round(vote / 2);
+    },
+   
   
 
   },
@@ -87,7 +137,8 @@ export default {
        });
         
     } 
-  }
+  },
+
  
 
 }
