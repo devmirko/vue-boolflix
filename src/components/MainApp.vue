@@ -1,9 +1,15 @@
 <template>
 <main>
     <div id="research">
-        <input type="text" v-model="userSearch">
-        <button @click="getList(); getListTv()">cerca</button>
-
+      <div class="container_input">
+        <input type="text" v-model="userSearch" @keyup.enter="getList(); getListTv()">
+        <button @click="getList(); getListTv()" class="fill">
+        <!-- svg -->
+         <svg aria-hidden='true' viewBox='0 0 24 24'>
+            <path d='M9.5,3A6.5,6.5 0 0,1 16,9.5C16,11.11 15.41,12.59 14.44,13.73L14.71,14H15.5L20.5,19L19,20.5L14,15.5V14.71L13.73,14.44C12.59,15.41 11.11,16 9.5,16A6.5,6.5 0 0,1 3,9.5A6.5,6.5 0 0,1 9.5,3M9.5,5C7,5 5,7 5,9.5C5,12 7,14 9.5,14C12,14 14,12 14,9.5C14,7 12,5 9.5,5Z' />
+          </svg>
+        </button>
+      </div>
     </div>
 
     <div class="container">
@@ -128,18 +134,51 @@ main{
 
     #research{
         height: 50px;
-        text-align: center;
-        line-height: 50px;
+        display: flex;
+        align-items: center;
+        justify-content: end;
+
+      .container_input{
+        display: flex;
+        margin-right: 20px;
+
 
         input{
-            width: 180px;
-           margin-right: 20px;
+          border: 1px solid rgba(0, 0, 0, 0.54);
+          width: 100%;
+          padding: 8px;
+          font-size: 16px;
+          line-height: 1.5;
+          flex: 1;
+
+        
+         
         }
+        // button
         button{
-          width: 50px;
-          height: 20px;
+         border: 1px solid red;
+         padding: 8px 16px;
+         background: red ;
+         display: flex;
+         align-items: center;
+         justify-content: center;
+         cursor: pointer;
+
+             svg{
+              width: 24px;
+              height: 24px;
+              
+             }
+
+      
         }
 
+
+
+
+      }
+
+        
        
     }
 

@@ -1,5 +1,6 @@
 <template>
   <div class="container">
+    <img src="../assets/Netflix-PNG.png" alt="">
 
    
   </div>
@@ -17,6 +18,14 @@ export default {
 .container{
    height: 70px;
    background-color: black;
+   display: flex;
+   align-items: center;
+
+    img{
+      width: 50px;
+      height: 50px;
+      margin-left: 10px;
+    }
 }
 
 </style>

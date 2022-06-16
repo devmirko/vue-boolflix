@@ -60,6 +60,8 @@
                         
                  
                 </div>
+                <!-- descrizione -->
+                <div class="overview">{{ listObjectSeries.overview }}</div>
             </div>
         </div>
         <!-- se e presente l'immagine -->
@@ -119,9 +121,9 @@
                         <fas :icon="['fas', 'star']" />
                         <fas :icon="['fas', 'star']" />
                     </div>
-                        
-                 
                 </div>
+                <!-- descrizione -->
+                <div class="overview">{{ listObjectSeries.overview }}</div>
             </div>
         </div>
     </div>    
@@ -212,13 +214,15 @@ export default {
 
             // lingua
             .lang{
-                display: inline-block;
-                font-size: 18px;
+                font-size: 40px;
                 font-weight: 700;
                 margin-bottom: 20px;
+                width: 100%;
+                display: flex;
+                justify-content: space-around;
+                align-content: center;
 
                 span{
-                    display: inline-block;
                     width: 10px;
                     height: 10px;
 
@@ -227,6 +231,13 @@ export default {
                         min-height: 100%;
                     }
                 }
+
+            }
+            // overviw
+            .overview{
+                margin-top: 10px;
+                font-size: 16px;
+                font-weight: 500;
 
             }
        }
