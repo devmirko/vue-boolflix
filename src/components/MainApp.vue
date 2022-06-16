@@ -11,8 +11,11 @@
         </button>
       </div>
     </div>
+    <div class="image_background" v-if="this.userSearch === '' ">
+      <img src="../assets/Netflix-logo-red-black-png.png" alt="" id="background">
+    </div>
 
-    <div class="container">
+    <div class="container" v-else>
         <div class="genere_film"><h3>FILM</h3></div>
         <div class="genere_serie"><h3>SERIE TV</h3></div>
 
@@ -182,6 +185,18 @@ main{
 
         
        
+    }
+
+    .image_background{
+      width: 100%;
+      height: calc(100vh - 120px);
+
+         #background{
+          width: 100%;
+          height: 100%;
+          padding: 20px;
+          
+         }
     }
 
     .container{
