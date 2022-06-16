@@ -31,11 +31,13 @@ import axios from "axios"
 import FilmApp from './FilmApp.vue'
 import SeriesApp from './SeriesApp.vue'
 
+
 export default {
   name: 'MainApp',
   components: {
     FilmApp,
-    SeriesApp
+    SeriesApp,
+   
  
 
   },
@@ -78,6 +80,7 @@ export default {
     getStars(vote) {
       return Math.round(vote / 2);
     },
+   
    
   
 
@@ -151,6 +154,7 @@ main{
 
         .box_film{
             width: 100%;
+            height: 50%;
             display: flex ;
             background-color: black;
             overflow-x: scroll;
@@ -159,6 +163,7 @@ main{
 
         .box_serie{
             width: 100%;
+            height: 50%;
             display: flex ;
             flex-wrap: nowrap;
             background-color: black;

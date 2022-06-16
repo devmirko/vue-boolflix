@@ -1,69 +1,136 @@
 <template>
 
-            <div class="film">
-                <div class="box_image">
-                    <img :src="urlImage + listObjectFilm.backdrop_path" alt="">
-                </div>
-
-
-                <div class="card"></div>
+    <div class="film">
+                <!-- se non e presente l'immagine -->
+        <div class="box_image" v-if="listObjectFilm.backdrop_path === null">
+                <img src="../assets/no-image.jpg" alt="" class="poster">
+                <div class="card">
                     <div class="title">{{ listObjectFilm.title }}</div>
                     <div class="original_title">{{ listObjectFilm.original_title }}</div>
                     <div class="lang">{{ listObjectFilm.original_language }}
                         <!-- se la bandiera e inglese -->
-                        <span v-if="listObjectFilm.original_language === 'en'" class="flag"><img src="../assets/britain_inghilterra_icon.png" alt=""></span>
+                        <span v-if="listObjectFilm.original_language === 'en'"><img src="../assets/britain_inghilterra_icon.png" alt="" class="flag"></span>
                         <!-- se la bandiera e italiana -->
-                        <span v-else-if="listObjectFilm.original_language === 'it'" class="flag"><img src="../assets/flag_italy_icon.png" alt=""></span>
+                        <span v-else-if="listObjectFilm.original_language === 'it'"><img src="../assets/flag_italy_icon.png" alt=""  class="flag"></span>
                     </div>
+                    
 
                     
-                <div class="vote">
-                    <div v-if="getStars(listObjectFilm.vote_average) == 0">
-                        <fas :icon="['far', 'star']" />
-                        <fas :icon="['far', 'star']" />
-                        <fas :icon="['far', 'star']" />
-                        <fas :icon="['far', 'star']" />
-                        <fas :icon="['far', 'star']" />
+                    <div class="vote">
+                        <div v-if="getStars(listObjectFilm.vote_average) == 0">
+                             <fas :icon="['far', 'star']" />
+                             <fas :icon="['far', 'star']" />
+                             <fas :icon="['far', 'star']" />
+                             <fas :icon="['far', 'star']" />
+                             <fas :icon="['far', 'star']" />
+                        </div>
+                        <div v-else-if="getStars(listObjectFilm.vote_average) == 1">
+                             <fas :icon="['fas', 'star']" />
+                             <fas :icon="['far', 'star']" />
+                             <fas :icon="['far', 'star']" />
+                             <fas :icon="['far', 'star']" />
+                             <fas :icon="['far', 'star']" />
+                        </div>
+                        <div v-else-if="getStars(listObjectFilm.vote_average) == 2">
+                              <fas :icon="['fas', 'star']" />
+                              <fas :icon="['fas', 'star']" />
+                              <fas :icon="['far', 'star']" />
+                              <fas :icon="['far', 'star']" />
+                               <fas :icon="['far', 'star']" />
+                        </div>
+                        <div v-else-if="getStars(listObjectFilm.vote_average) == 3">
+                            <fas :icon="['fas', 'star']" />
+                            <fas :icon="['fas', 'star']" />
+                            <fas :icon="['fas', 'star']" />
+                            <fas :icon="['far', 'star']" />
+                            <fas :icon="['far', 'star']" />
+                        </div>
+                        <div v-else-if="getStars(listObjectFilm.vote_average) == 4">
+                            <fas :icon="['fas', 'star']" />
+                            <fas :icon="['fas', 'star']" />
+                            <fas :icon="['fas', 'star']" />
+                            <fas :icon="['fas', 'star']" />
+                            <fas :icon="['far', 'star']" />
+                        </div>
+                        <div v-else-if="getStars(listObjectFilm.vote_average) == 5">
+                            <fas :icon="['fas', 'star']" />
+                            <fas :icon="['fas', 'star']" />
+                            <fas :icon="['fas', 'star']" />
+                            <fas :icon="['fas', 'star']" />
+                            <fas :icon="['fas', 'star']" />
+                        </div>
                     </div>
-                    <div v-else-if="getStars(listObjectFilm.vote_average) == 1">
-                        <fas :icon="['fas', 'star']" />
-                        <fas :icon="['far', 'star']" />
-                        <fas :icon="['far', 'star']" />
-                        <fas :icon="['far', 'star']" />
-                        <fas :icon="['far', 'star']" />
-                    </div>
-                    <div v-else-if="getStars(listObjectFilm.vote_average) == 2">
-                        <fas :icon="['fas', 'star']" />
-                        <fas :icon="['fas', 'star']" />
-                        <fas :icon="['far', 'star']" />
-                        <fas :icon="['far', 'star']" />
-                        <fas :icon="['far', 'star']" />
-                    </div>
-                    <div v-else-if="getStars(listObjectFilm.vote_average) == 3">
-                        <fas :icon="['fas', 'star']" />
-                        <fas :icon="['fas', 'star']" />
-                        <fas :icon="['fas', 'star']" />
-                        <fas :icon="['far', 'star']" />
-                        <fas :icon="['far', 'star']" />
-                    </div>
-                    <div v-else-if="getStars(listObjectFilm.vote_average) == 4">
-                        <fas :icon="['fas', 'star']" />
-                        <fas :icon="['fas', 'star']" />
-                        <fas :icon="['fas', 'star']" />
-                        <fas :icon="['fas', 'star']" />
-                        <fas :icon="['far', 'star']" />
-                    </div>
-                    <div v-else-if="getStars(listObjectFilm.vote_average) == 5">
-                        <fas :icon="['fas', 'star']" />
-                        <fas :icon="['fas', 'star']" />
-                        <fas :icon="['fas', 'star']" />
-                        <fas :icon="['fas', 'star']" />
-                        <fas :icon="['fas', 'star']" />
-                    </div>
-                        
-                 
                 </div>
-            </div>    
+        </div>
+        <!-- se e presente l'immagine -->
+        <div class="box_image" v-else>
+                <img :src="urlImage + listObjectFilm.backdrop_path" alt="" class="poster" >
+                <div class="card">
+                    <div class="title">{{ listObjectFilm.title }}</div>
+                    <div class="original_title">{{ listObjectFilm.original_title }}</div>
+                    <div class="lang">{{ listObjectFilm.original_language }}
+                        <!-- se la bandiera e inglese -->
+                        <span v-if="listObjectFilm.original_language === 'en'"><img src="../assets/britain_inghilterra_icon.png" alt="" class="flag"></span>
+                        <!-- se la bandiera e italiana -->
+                        <span v-else-if="listObjectFilm.original_language === 'it'"><img src="../assets/flag_italy_icon.png" alt=""  class="flag"></span>
+                    </div>
+                    
+
+                    
+                    <div class="vote">
+                        <div v-if="getStars(listObjectFilm.vote_average) == 0">
+                             <fas :icon="['far', 'star']" />
+                             <fas :icon="['far', 'star']" />
+                             <fas :icon="['far', 'star']" />
+                             <fas :icon="['far', 'star']" />
+                             <fas :icon="['far', 'star']" />
+                        </div>
+                        <div v-else-if="getStars(listObjectFilm.vote_average) == 1">
+                             <fas :icon="['fas', 'star']" />
+                             <fas :icon="['far', 'star']" />
+                             <fas :icon="['far', 'star']" />
+                             <fas :icon="['far', 'star']" />
+                             <fas :icon="['far', 'star']" />
+                        </div>
+                        <div v-else-if="getStars(listObjectFilm.vote_average) == 2">
+                              <fas :icon="['fas', 'star']" />
+                              <fas :icon="['fas', 'star']" />
+                              <fas :icon="['far', 'star']" />
+                              <fas :icon="['far', 'star']" />
+                               <fas :icon="['far', 'star']" />
+                        </div>
+                        <div v-else-if="getStars(listObjectFilm.vote_average) == 3">
+                            <fas :icon="['fas', 'star']" />
+                            <fas :icon="['fas', 'star']" />
+                            <fas :icon="['fas', 'star']" />
+                            <fas :icon="['far', 'star']" />
+                            <fas :icon="['far', 'star']" />
+                        </div>
+                        <div v-else-if="getStars(listObjectFilm.vote_average) == 4">
+                            <fas :icon="['fas', 'star']" />
+                            <fas :icon="['fas', 'star']" />
+                            <fas :icon="['fas', 'star']" />
+                            <fas :icon="['fas', 'star']" />
+                            <fas :icon="['far', 'star']" />
+                        </div>
+                        <div v-else-if="getStars(listObjectFilm.vote_average) == 5">
+                            <fas :icon="['fas', 'star']" />
+                            <fas :icon="['fas', 'star']" />
+                            <fas :icon="['fas', 'star']" />
+                            <fas :icon="['fas', 'star']" />
+                            <fas :icon="['fas', 'star']" />
+                        </div>
+                    </div>
+                </div>
+        </div>
+
+ 
+
+                
+
+
+                
+    </div>    
 
    
 </template>
@@ -79,7 +146,7 @@ export default {
  },
  data(){
     return{
-        urlImage: "http://image.tmdb.org/t/p/w342/",
+        urlImage: "http://image.tmdb.org/t/p/w780/",
         
     }
   },
@@ -94,24 +161,85 @@ export default {
 </script>
 
 <style lang="scss">
- .film{
-     width: calc(100% / 5 );
-    // debugger
-    color: white;
+.film{
+     min-width: 400px;
+     height: 100%;
+     
+    
+    .box_image{
+        width:  100%;
+        height: 100%;
+        position: relative;
 
-    // bandiera
-    .flag{
-        display: inline-block;
-        width: 20px;
-        height: 20px;
+        .poster{
+            width: 100%;
+            height: 100%;
+            position: absolute;
+            z-index: 10;
+             
+         &:hover{
+            z-index: -10;
+         }
 
-        img{
-        max-width: 100%;
-        max-height: 100%;
-        }
-                   
+           
+         }
+
+
+         .card{
+        width:  100%;
+        height: 100%;
+        position: absolute;
+        top: 0;
+        left: 0;
+        z-index: 1;
+        background-color: black;
+        color: white;
+        padding: 10px;
+        
+
+            //titolo
+                        
+            .title{
+                width: 100%;
+                margin-bottom: 20px;
+                text-align: center;
+                font-size: 20px;
+                font-weight: 700;
+            }
+
+            .original_title{
+                width: 100%;
+                margin-bottom: 18px;
+                text-align: center;
+                font-size: 20px;
+                font-weight: 700;
+            }
+
+            // lingua
+            .lang{
+                display: inline-block;
+                font-size: 18px;
+                font-weight: 700;
+                margin-bottom: 20px;
+
+                span{
+                    display: inline-block;
+                    width: 10px;
+                    height: 10px;
+
+                    .flag{
+                        min-width: 100%;
+                        min-height: 100%;
+                    }
+                }
+
+            }
+       }
+
+
     }
- }
+    
+}
 
 
 
