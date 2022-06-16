@@ -13,6 +13,8 @@
     </div>
 
     <div class="container">
+        <div class="genere_film"><h3>FILM</h3></div>
+        <div class="genere_serie"><h3>SERIE TV</h3></div>
 
         <!-- film -->
         <div class="box_film">
@@ -188,6 +190,32 @@ main{
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
+    position: relative;
+         .genere_film{
+          width: 200px;
+          height: 40px;
+          background-color: rgba(255, 0, 0, 0.333);
+          position: absolute;
+          top: 20px;
+          left: 20px;
+          z-index: 20;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+         }
+
+         .genere_serie{
+          width: 200px;
+          height: 40px;
+          background-color: rgba(255, 0, 0, 0.333);
+          position: absolute;
+          bottom: 500px;
+          left: 20px;
+          z-index: 20;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+         }
 
 
 
