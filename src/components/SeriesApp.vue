@@ -157,7 +157,7 @@ export default {
 
 </script>
 
-<style lang="scss">
+<style scoped lang="scss">
 .film{
      min-width: 400px;
      height: 100%;
@@ -172,10 +172,13 @@ export default {
             width: 100%;
             height: 100%;
             position: absolute;
-            z-index: 10;
+            z-index: 100;
+            
              
          &:hover{
-            z-index: -10;
+           opacity: 0;
+            
+            
          }
 
            
@@ -188,7 +191,7 @@ export default {
         position: absolute;
         top: 0;
         left: 0;
-        z-index: 1;
+        z-index: 10;
         background-color: black;
         color: white;
         padding: 10px;
