@@ -179,7 +179,7 @@ export default {
             width: 100%;
             height: 100%;
             position: absolute;
-            z-index: 100;
+            z-index: 10;
             
           &:hover{
           opacity: 0;
@@ -201,7 +201,7 @@ export default {
         background-color: black;
         color: white;
         padding: 10px;
-        z-index: 10;
+        z-index: 1;
         
         
       
